@@ -8,17 +8,16 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 
-namespace WebhookFunctionApp2
+namespace SampleFunctionAppNew
 {
-    public static class WebHookFunction2
+    public static class SampleWebhook
     {
-        [FunctionName("WebHookFunction2")]
-        public static async Task<IActionResult> Run(
-            //[HttpTrigger(AuthorizationLevel.Function, "get", "post", Route = null)] HttpRequest req,
-            [HttpTrigger(AuthorizationLevel.Function,"post", Route = null)] HttpRequest req,
-            [Queue("update-record"),StorageAccount("AzureWebJobsStorage")]ICollector<string> msg, ILogger log)
+        [FunctionName("SampleWebhook")]
+        public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function,"post", Route = null)] HttpRequest req,
+            [Queue("update-record"),StorageAccount("AzureWebjobsstorage")] ICollector<string> msg,ILogger log)
         {
-            log.LogInformation("Webhook processed a request");
+
+            log.LogInformation("webhook prceessed a request.");
             var requestBody = await new StreamReader(req.Body).ReadToEndAsync();
             try
             {

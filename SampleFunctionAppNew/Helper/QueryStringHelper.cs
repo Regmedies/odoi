@@ -3,70 +3,67 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
 
-namespace WebhookFunctionApp2.Helper
-{ 
-public static class QueryStringHelper 
+namespace SampleFunctionAppNew.Helper
 {
-	public static string[] SplitAt(string s, string delimiter)
-	{
-			if (string.IsNullOrEmpty(delimiter))
-            {
-				throw new ArgumentException();
-            }
-			if (string.IsNullOrEmpty(s))
-            {
-				return new string[] { "" };
-            }
-			var index = 0;
-			var first = true;
-			List<string> strings = null;
-			int delimlength = delimiter.Length;
-
-			while (true)
-            {
-				int index2 = s.IndexOf(delimiter, index, StringComparison.Ordinal);
-				if (index2<0)
-                {
-					if (first)
-                    {
-						return new string[] { s };
-
-                    }
-					string.Add(s.Substring(index));
-					break;
-                }
-				else 
-				{
-				  if (first)
-                    {
-						strings = new List<string>();
-						first = false;
-                    }
-					string newstr = s.Substring(index, (index) - (index));
-					string.Add(newstr);
-					index = index2 + delimlength;
-				}
-
-            }
-			return strings.ToArray();
-
-	}
-		private static int ToHexNumber(int c)
-
+    public static class QueryStringHelper
+    {
+        private static string[] SplitAt(string s, string delimiter)
         {
-			if (c >= 'A' && c <= 'Z')
+            if (string.IsNullOrEmpty(delimiter))
             {
-				return 10 + c - 'A';
+                throw new ArgumentException();
             }
-			else if (c >= 'a' && c <= 'z')
+            if (string.IsNullOrEmpty(s))
             {
-				return 10 + c - 'a';
+                return new string[] { "" };
             }
-			else
+            var index = 0;
+            var first = true;
+            List<string> strings = null;
+            int delimLength = delimiter.Length;
+            while (true)
             {
-				return (c >= '0' && c <= '9') ? (c - '0') : (-1);
+                int index2 = s.IndexOf(delimiter, index, StringComparison.Ordinal);
+                if (index2 < 0)
+                {
+                    if (first)
+                    {
+                        return new string[] { s };
+                    }
+                    strings.Add(s.Substring(index));
+                    break;
+                }
+                else
+                {
+                    if (first)
+                    {
+                        strings = new List<string>();
+                        first = false;
+                    }
+                    string newstr = s.Substring(index, (index2) - (index));
+                    strings.Add(newstr);
+                    index = index2 + delimLength;
+                }
+            }
+            return strings.ToArray();
+        }
+
+        private static int ToHexNumber(int c)
+        {
+            if (c >= 'A' && c <= 'Z')
+            {
+                return 10 + c - 'A';
+            }
+            else if (c >= 'a' && c <= 'z')
+            {
+                return 10 + c - 'a';
+            }
+            else
+            {
+                return (c >= '0' && c <= '9') ? (c - '0') : (-1);
             }
         }
+
         private static string PercentDecodeUtf8(string str)
         {
             int len = str.Length;
@@ -443,6 +440,8 @@ public static class QueryStringHelper
             // Convert array-like dictionaries to ILists
             ConvertLists(root);
             return root;
+
+
         }
     }
 }
