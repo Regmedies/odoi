@@ -13,7 +13,7 @@ namespace SampleFunctionAppNew
 {
     public static class SampleUpdateRecord
     {
-        private static readonly RestClient Client = new RestClient($"https://api.tadabase.io/api/v1/data-table/{GetEnvironmetVariable("updateTableId")}/records")
+        private static readonly RestClient Client = new RestClient($"https://api.tadabase.io/api/v1/data-table/{GetEnvironmetVariable("UpdateTableId")}/records")
         {
             Timeout = -1
         };
@@ -44,6 +44,7 @@ namespace SampleFunctionAppNew
             RestSharpHelper.AddParameter(updateModel, request);
 
             IRestResponse response = Client.Execute(request);
+           
 
             if (response.IsSuccessful)
             {
@@ -63,5 +64,6 @@ namespace SampleFunctionAppNew
         {
             return Environment.GetEnvironmentVariable(name, EnvironmentVariableTarget.Process);
         }
+
     }
 }
