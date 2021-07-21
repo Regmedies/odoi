@@ -8,7 +8,7 @@ namespace SampleFunctionAppNew.Models
 {
     public class UpdateWebhookMessage
     {
-        [JsonProperty("field_107")]
+        [JsonProperty("field_147")]
     public Dictionary<string,string> Join { get; set; }
     }
 }
