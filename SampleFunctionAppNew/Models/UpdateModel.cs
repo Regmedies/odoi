@@ -7,7 +7,7 @@ namespace SampleFunctionAppNew.Models
 {
     public class UpdateModel
     {
-        [JsonPropertyName("field_102")]
+        [JsonPropertyName("field_144")]
     public string LongText { get; set; }
     }
 }
