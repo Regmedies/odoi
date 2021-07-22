@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Globalization;
 using System.Text;
-
+// Paul Hutchinson has run through this, no change from provided file other than the namespace SampleFunctionAppNew.Helper
 namespace SampleFunctionAppNew.Helper
 {
     public static class QueryStringHelper
