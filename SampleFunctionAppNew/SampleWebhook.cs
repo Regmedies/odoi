@@ -14,7 +14,7 @@ namespace SampleFunctionAppNew
     {
         [FunctionName("SampleWebhook")]
         public static async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Function,"post", Route = null)] HttpRequest req,
-            [Queue("update-record"),StorageAccount("AzureWebjobsstorage")] ICollector<string> msg,ILogger log)
+            [Queue("sample-update-record"),StorageAccount("AzureWebjobsstorage")] ICollector<string> msg,ILogger log)
         {
 
             log.LogInformation("webhook prceessed a request.");
